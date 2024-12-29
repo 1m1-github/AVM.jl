@@ -4,9 +4,24 @@ this project will be developed as part of the larger project: https://github.com
 
 Translate julia -> TEAL as follows:
 
-1. Translate julia to ARM assembly
-2. Translate ARM assembly to TEAL
-3. Check TEAL rules (e.g. no backward branching) - Some checks can be performed on julia directly (before step 1.
+map julia function (or ir token) to TEAL opcode as early as possible
+
+`Expr` with `head == :call` => map to overwritten function
+
+# mapping
+
+Opcodes
+julia
+
+TDD
+FairTreasury is 1st test for JuliaTEAL
+JuliaAVM+ is 1st test for JuliaTEAL
+
+(JuliaAVM+ arb prec decimal float elemtary functions)
+
+a function per opcode, with io
+
+end with array of bytes
 
 ## Example 1
 
@@ -150,3 +165,20 @@ function main(transaction, args)
     return true
 end
 ```
+
+===
+
+immediate
+stack
+scratch
+state
+box
+
+x = scratch(4)
+x = scratch()
+typeof(x) == ScratchAVM
+
+dupn(n)
+dupn(n, a)
+dupn(a, n)
+dupn(a; n)
