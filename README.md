@@ -1,27 +1,14 @@
-this project will be developed as part of the larger project: https://github.com/1m1-github/1m1
+This project is WORK IN PROGRESS and is also being developed as part of the larger project: https://github.com/1m1-github/1m1
 
-# juliaTEAL
+# AVM.jl
 
-Translate julia -> TEAL as follows:
+A compiler translating Julia into TEAL, the assembly language of the AVM (https://developer.algorand.org/docs/get-details/dapps/avm/teal/specification/)
 
-map julia function (or ir token) to TEAL opcode as early as possible
+# 1st test case
 
-`Expr` with `head == :call` => map to overwritten function
+FairTreasury is 1st test for AVM.jl using AVM+.jl
 
-# mapping
-
-Opcodes
-julia
-
-TDD
-FairTreasury is 1st test for JuliaTEAL
-JuliaAVM+ is 1st test for JuliaTEAL
-
-(JuliaAVM+ arb prec decimal float elemtary functions)
-
-a function per opcode, with io
-
-end with array of bytes
+AVM+.jl is a library to run arbitrarily precise decimal float elemtary functions in AVM.jl
 
 ## Example 1
 
@@ -47,7 +34,7 @@ global ZeroAddress
 &&
 ```
 
-...could be translated from the following julia code
+...could be translated from the following Julia code
 
 ```
 function main(transaction, args)
@@ -76,7 +63,7 @@ function main(transaction, args)
 end
 ```
 
-or in many other ways according to julia.
+or in many other ways according to Julia.
 
 
 ## Example 2
@@ -125,7 +112,7 @@ global ZeroAddress
 &&
 ```
 
-...could be translated from the following julia code
+...could be translated from the following Julia code
 
 ```
 function addr2_and_secret(transaction, args)
@@ -165,20 +152,3 @@ function main(transaction, args)
     return true
 end
 ```
-
-===
-
-immediate
-stack
-scratch
-state
-box
-
-x = scratch(4)
-x = scratch()
-typeof(x) == ScratchAVM
-
-dupn(n)
-dupn(n, a)
-dupn(a, n)
-dupn(a; n)
